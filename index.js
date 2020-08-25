@@ -68,6 +68,10 @@ export const proximityObserver = {
 
   isObserving: false,
 
+  isObservingZone() {
+    return this.isObserving;
+  },
+
   initialize(credentials: CloudCredentials, config: ProximityObserverConfig) {
     RNEstimoteProximity.initialize(
       Object.assign({}, config, {
@@ -150,9 +154,15 @@ export const proximityObserver = {
     RNEstimoteProximity.stopObservingZones();
     this.isObserving = false;
 
-    this.onEnterSubscription.remove();
-    this.onExitSubscription.remove();
-    this.onChangeSubscription.remove();
+    if (this.onEnterSubscription) {
+      this.onEnterSubscription.remove();
+    }
+    if (this.onExitSubscription) {
+      this.onExitSubscription.remove();
+    }
+    if (this.onChangeSubscription) {
+      this.onChangeSubscription.remove();
+    }
   }
 };
 
