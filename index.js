@@ -151,6 +151,10 @@ export const proximityObserver = {
   },
 
   stopObservingZones() {
+    if (!this.isObserving) {
+      return;
+    }
+    
     RNEstimoteProximity.stopObservingZones();
     this.isObserving = false;
 
