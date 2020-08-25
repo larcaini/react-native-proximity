@@ -169,7 +169,7 @@ export const locationPermission = {
       return result;
     } else if (Platform.OS === "android") {
       const result = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
       );
       return result === "granted" ? "always" : "denied";
     }
